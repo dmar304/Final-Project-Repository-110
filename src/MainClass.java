@@ -24,8 +24,8 @@ public class MainClass extends JFrame implements ActionListener {
 	private JButton button7 = new JButton("");
 	private JButton button8 = new JButton("");
 	private JButton button9 = new JButton("");
-	//private JButton button10 = new JButton("Start Over/Play Again?");
-	//private JButton button11 = new JButton("Exit Game");
+	private JButton button10 = new JButton("Start Over/Play Again?");
+	private JButton button11 = new JButton("Exit Game");
 /*	private JButton button12 = new JButton("");
 	private JButton button13 = new JButton("");
 	private JButton button14 = new JButton("");
@@ -44,10 +44,9 @@ public class MainClass extends JFrame implements ActionListener {
 		
 	  public MainClass() {	
 		//Creates JFrame window
-		window.setSize(600, 600);
+		window.setSize(500, 500);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//window.setLayout(new GridLayout (1,1));
-		window.setLayout(new GridLayout (3, 3));
+		window.setLayout(new GridLayout (4, 4));
 		
 		//Make window visible
 		window.setVisible(true);
@@ -63,8 +62,8 @@ public class MainClass extends JFrame implements ActionListener {
 		window.add(button7);
 		window.add(button8);
 		window.add(button9);
-		//window.add(button10);
-		//window.add(button11);
+		window.add(button10);
+		window.add(button11);
 	/*	window.add(button12);
 		window.add(button13);
 		window.add(button14);
@@ -85,8 +84,8 @@ public class MainClass extends JFrame implements ActionListener {
 		button7.addActionListener(this);
 		button8.addActionListener(this);
 		button9.addActionListener(this);
-		//button10.addActionListener(this);
-		//button11.addActionListener(this);
+		button10.addActionListener(this);
+		button11.addActionListener(this);
 	/*	button12.addActionListener(this);
 		button13.addActionListener(this);
 		button14.addActionListener(this);
@@ -143,7 +142,8 @@ public class MainClass extends JFrame implements ActionListener {
 		}else if (ttt.getSource() == button9) {
 			button9.setText(letter);
 			button9.setEnabled(false);
-	/*	}else if (ttt.getSource() == button10) {
+		}
+		/*else if (ttt.getSource() == button10) {
 			button10.setText(letter);
 			button10.setEnabled(false);
 		}else if (ttt.getSource() == button11) {
@@ -215,10 +215,12 @@ public class MainClass extends JFrame implements ActionListener {
 		//Win/loss dialog 
 		if (win == true) {
 			JOptionPane.showMessageDialog(null, letter + " Wins!");
+			//insert audio celebration here
 		}else if (count == 9 && win == false) {
 			JOptionPane.showMessageDialog(null,  "Tie Game!");
+			
 		}
-		}	
+			
 		
 		
 	}
