@@ -4,9 +4,12 @@
 
 import java.awt.*;
 import java.awt.event.*;
+
+
 import javax.swing.*;
 import java.util.Scanner;
-
+import java.io.*;
+import javax.sound.sampled.*;
 	
 
 public class MainClass extends JFrame implements ActionListener {
@@ -84,8 +87,8 @@ public class MainClass extends JFrame implements ActionListener {
 		button7.addActionListener(this);
 		button8.addActionListener(this);
 		button9.addActionListener(this);
-		button10.addActionListener(this);
-		button11.addActionListener(this);
+		button10.addActionListener(new PlayAgain());
+		button11.addActionListener(new CloseListener());
 	/*	button12.addActionListener(this);
 		button13.addActionListener(this);
 		button14.addActionListener(this);
@@ -143,29 +146,7 @@ public class MainClass extends JFrame implements ActionListener {
 			button9.setText(letter);
 			button9.setEnabled(false);
 		}
-		/*else if (ttt.getSource() == button10) {
-			button10.setText(letter);
-			button10.setEnabled(false);
-		}else if (ttt.getSource() == button11) {
-			button11.setText(letter);
-			button11.setEnabled(false);
-		}else if (ttt.getSource() == button12) {
-			button12.setText(letter);
-			button12.setEnabled(false);
-		}else if (ttt.getSource() == button13) {
-			button13.setText(letter);
-			button13.setEnabled(false);
-		}else if (ttt.getSource() == button14) {
-			button14.setText(letter);
-			button14.setEnabled(false);
-		}else if (ttt.getSource() == button15) {
-			button15.setText(letter);
-			button15.setEnabled(false);
-		}else if (ttt.getSource() == button16) {
-			button16.setText(letter);
-			button16.setEnabled(false);
-		}
-		*/
+	
 		
 			//Determining winner
 			//horizontal wins
@@ -215,32 +196,22 @@ public class MainClass extends JFrame implements ActionListener {
 		//Win/loss dialog 
 		if (win == true) {
 			JOptionPane.showMessageDialog(null, letter + " Wins!");
+			
 			//insert audio celebration here
+			//music();
+			
+			
 		}else if (count == 9 && win == false) {
 			JOptionPane.showMessageDialog(null,  "Tie Game!");
 			
 		}
-			
-		
-		
+									
 	}
-	
-/*	public String playAgain() {
-		
-		JFrame question = new JFrame();
-		
-		String answer = JOptionPane.showInputDialog(question, "Play again?");
-		System.out.printf("Okay!");
-		//Scanner question = new Scanner(System.in);
-		//String answer = ;
-		return(answer);
-	}
-*/	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		new MainClass();
-		Play();
+		
 	}
 
 
@@ -265,14 +236,21 @@ System.out.println("Would you like to play again?");
 	}
 }
 
+public void music() {
+	try {
+		File file = new File(getName() + "jingle2.wav");
+		Clip clip = AudioSystem.getClip();
+		clip.open(AudioSystem.getAudioInputStream(file));
+		clip.start();
+		Thread.sleep(clip.getMicrosecondLength());
+	} catch(Exception e) {
+		System.err.println(e.getMessage());
+	}
+} 
+
+
+
 }
-
-
-	
-
-
-
-
 
 
 
