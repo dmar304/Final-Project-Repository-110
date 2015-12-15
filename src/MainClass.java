@@ -2,14 +2,24 @@
 //Project 3. Final Project
 //Tic Tac Toe Game
 
+//Game and Frame imports 
 import java.awt.*;
 import java.awt.event.*;
-
-
 import javax.swing.*;
 import java.util.Scanner;
 import java.io.*;
 import javax.sound.sampled.*;
+
+//log file imports
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.security.*;
+
+
 	
 
 public class MainClass extends JFrame implements ActionListener {
@@ -89,12 +99,7 @@ public class MainClass extends JFrame implements ActionListener {
 		button9.addActionListener(this);
 		button10.addActionListener(new PlayAgain());
 		button11.addActionListener(new CloseListener());
-	/*	button12.addActionListener(this);
-		button13.addActionListener(this);
-		button14.addActionListener(this);
-		button15.addActionListener(this);
-		button16.addActionListener(this);
-		*/
+	
 		
 		//Make window visible
 		window.setVisible(true);
@@ -108,6 +113,8 @@ public class MainClass extends JFrame implements ActionListener {
 		
 		//Rotates turns
 		count++;
+		//int count[] = {1,2,3,4,5,6,7,8,9,10};
+		
 		
 		//Who's turn it is
 		if (count == 1 || count == 3 || count == 5 || count == 7 || count == 9) {
@@ -198,7 +205,7 @@ public class MainClass extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(null, letter + " Wins!");
 			
 			//insert audio celebration here
-			//music();
+			music();
 			
 			
 		}else if (count == 9 && win == false) {
@@ -208,14 +215,16 @@ public class MainClass extends JFrame implements ActionListener {
 									
 	}
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		
 		new MainClass();
 		
 	}
+*/
 
-
-
+/*
 public static void Play() {
 	
 System.out.println("Would you like to play again?");
@@ -235,10 +244,12 @@ System.out.println("Would you like to play again?");
 		Play();	
 	}
 }
+*/
 
+//attempted jingle meant to play when the game has been won
 public void music() {
 	try {
-		File file = new File(getName() + "jingle2.wav");
+		File file = new File(getName() + "jingle.wav");
 		Clip clip = AudioSystem.getClip();
 		clip.open(AudioSystem.getAudioInputStream(file));
 		clip.start();
@@ -249,6 +260,56 @@ public void music() {
 } 
 
 
+public static void main(String[] args) {
+	// TODO Auto-generated method stub
+	
+	Scanner scan = new Scanner(System.in);
+	
+	File outFile = new File("demoed.txt");
+	FileOutputStream outFileStream;
+	
+	SecureRandom ran = new SecureRandom();
+	
+	int num = ran.nextInt(599);
+	
+	try 
+	{
+		
+		outFileStream = new FileOutputStream(outFile);
+		PrintWriter outStream = new PrintWriter(outFileStream);
+		
+		System.out.println
+		("Greetings, Gamer!\n We would like to conduct a short survey before we begin.\n  What is your name?");
+		String name = scan.next();
+		outStream.println("The name is " +name+ ".");
+		
+		System.out.println("Hello "+name+"! ");
+		System.out.println("How old are you?");
+		String age = scan.next();		
+		outStream.println("The age is " +age+ ".");
+		
+		System.out.println(name+", what do you like most about games?");
+		String add = scan.next();
+		outStream.println("They like " +add+ ".");
+							
+		
+		System.out.println("Thank You! Please, enjoy the game!");
+		
+		outStream.close();
+		scan.close();
+		
+	}catch(FileNotFoundException e){
+		e.printStackTrace();
+	}
+	
+	try {Thread.sleep(2000);}
+	catch (Exception e){}
+	
+	
+	//Game method
+	new MainClass();
+	
+}
 
 }
 
