@@ -24,8 +24,8 @@ public class MainClass extends JFrame implements ActionListener {
 	private JButton button7 = new JButton("");
 	private JButton button8 = new JButton("");
 	private JButton button9 = new JButton("");
-	private JButton button10 = new JButton("Start Over/Play Again?");
-	private JButton button11 = new JButton("Exit Game");
+	//private JButton button10 = new JButton("Start Over/Play Again?");
+	//private JButton button11 = new JButton("Exit Game");
 /*	private JButton button12 = new JButton("");
 	private JButton button13 = new JButton("");
 	private JButton button14 = new JButton("");
@@ -47,7 +47,7 @@ public class MainClass extends JFrame implements ActionListener {
 		window.setSize(600, 600);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//window.setLayout(new GridLayout (1,1));
-		window.setLayout(new GridLayout (4, 4));
+		window.setLayout(new GridLayout (3, 3));
 		
 		//Make window visible
 		window.setVisible(true);
@@ -63,8 +63,8 @@ public class MainClass extends JFrame implements ActionListener {
 		window.add(button7);
 		window.add(button8);
 		window.add(button9);
-		window.add(button10);
-		window.add(button11);
+		//window.add(button10);
+		//window.add(button11);
 	/*	window.add(button12);
 		window.add(button13);
 		window.add(button14);
@@ -85,8 +85,8 @@ public class MainClass extends JFrame implements ActionListener {
 		button7.addActionListener(this);
 		button8.addActionListener(this);
 		button9.addActionListener(this);
-		button10.addActionListener(this);
-		button11.addActionListener(this);
+		//button10.addActionListener(this);
+		//button11.addActionListener(this);
 	/*	button12.addActionListener(this);
 		button13.addActionListener(this);
 		button14.addActionListener(this);
@@ -108,9 +108,9 @@ public class MainClass extends JFrame implements ActionListener {
 		count++;
 		
 		//Who's turn it is
-		if (count == 1 || count == 3 || count == 5 || count == 7 || count == 9 || count == 11 || count == 13 || count == 15) {
+		if (count == 1 || count == 3 || count == 5 || count == 7 || count == 9) {
 			letter = "X";
-		} else if (count == 2 || count == 4 || count  == 6 || count == 8 || count == 10 || count == 12 || count == 14 || count == 16) {
+		} else if (count == 2 || count == 4 || count  == 6 || count == 8 || count == 10) {
 			letter = "O";
 		}
 		
@@ -167,49 +167,50 @@ public class MainClass extends JFrame implements ActionListener {
 		}
 		*/
 		
-		//Determining winner
-		//horizontal wins
-		if (button1.getText() == button2.getText() 
-				&& button2.getText() == button3.getText() 
-				&& button1.getText() != "") {
-			win = true;
-		} else if (button4.getText() == button5.getText() 
-				&& button5.getText() == button6.getText() 
-				&& button4.getText() != "") {
-			win = true;
-		} else if (button7.getText() == button8.getText() 
-				&& button8.getText() == button9.getText() 
-				&& button7.getText() != "") {
-			win = true;
-		} 
-		
-		//Vertical wins
-		else if (button1.getText() == button4.getText() 
-				&& button4.getText() == button7.getText()  
-				&& button1.getText() != "") {
-			win = true;
-		} else if (button2.getText() == button5.getText() 
-				&& button5.getText() == button8.getText() 
-				&& button2.getText() != "") {
-			win = true;
-		} else if (button3.getText() == button6.getText() 
-				&& button6.getText() == button9.getText() 
-				&& button3.getText() != "") {
-			win = true;
-		} 
-		
-		//Diagonal wins
-		else if (button1.getText() == button5.getText() 
-				&& button5.getText () == button9.getText() 
-				&& button1.getText () != "") {
-			win = true;
-		} else if (button3.getText() == button5.getText() 
-				&& button5.getText () == button7.getText() 
-				&& button3.getText () != "") {
-			win = true;
-		} else {
-			win = false;
-		}
+			//Determining winner
+			//horizontal wins
+			if (button1.getText() == button2.getText() 
+					&& button2.getText() == button3.getText() 
+					&& button1.getText() != "") {
+				win = true;
+			} else if (button4.getText() == button5.getText() 
+					&& button5.getText() == button6.getText() 
+					&& button4.getText() != "") {
+				win = true;
+			} else if (button7.getText() == button8.getText() 
+					&& button8.getText() == button9.getText() 
+					&& button7.getText() != "") {
+				win = true;
+			} 
+			
+			//Vertical wins
+			else if (button1.getText() == button4.getText() 
+					&& button4.getText() == button7.getText() 
+					&& button1.getText() != "") {
+				win = true;
+			} else if (button2.getText() == button5.getText() 
+					&& button5.getText() == button8.getText() 
+					&& button2.getText() != "") {
+				win = true;
+			} else if (button3.getText() == button6.getText() 
+					&& button6.getText() == button9.getText() 
+					&& button3.getText() != "") {
+				win = true;
+			} 
+			
+			//Diagonal wins
+			else if (button1.getText() == button5.getText() 
+					&& button5.getText () == button9.getText() 
+					&& button1.getText () != "") {
+				win = true;
+			} else if (button3.getText() == button5.getText() 
+					&& button5.getText () == button7.getText() 
+					&& button3.getText () != "") {
+				win = true;
+			} else {
+				win = false;
+			}
+
 		
 		//Win/loss dialog 
 		if (win == true) {
