@@ -2,6 +2,13 @@
 //Project 3. Final Project
 //Tic Tac Toe Game
 
+/*
+ * Work cited:
+ * Youtube videos for game logic and help with music file
+ * stack overflow and other google for syntax help
+ * Delaney Chapman for help with a few problems
+ */
+
 //Game and Frame imports 
 import java.awt.*;
 import java.awt.event.*;
@@ -54,7 +61,7 @@ public class MainClass extends JFrame implements ActionListener {
 	
 	
 
-		
+	  //constructor for main class
 	  public MainClass() {	
 		//Creates JFrame window
 		window.setSize(500, 500);
@@ -118,9 +125,9 @@ public class MainClass extends JFrame implements ActionListener {
 		
 		//Who's turn it is
 		if (count == 1 || count == 3 || count == 5 || count == 7 || count == 9) {
-			letter = "X";
+			letter = "Carroll";
 		} else if (count == 2 || count == 4 || count  == 6 || count == 8 || count == 10) {
-			letter = "O";
+			letter = "Tech";
 		}
 		
 		
@@ -249,11 +256,11 @@ System.out.println("Would you like to play again?");
 //attempted jingle meant to play when the game has been won
 public void music() {
 	try {
-		File file = new File(getName() + "jingle.wav");
-		Clip clip = AudioSystem.getClip();
-		clip.open(AudioSystem.getAudioInputStream(file));
-		clip.start();
-		Thread.sleep(clip.getMicrosecondLength());
+		File jingle = new File(getName() + "jingle.wav");
+		Clip song = AudioSystem.getClip();
+		song.open(AudioSystem.getAudioInputStream(jingle));
+		song.start();
+		Thread.sleep(song.getMicrosecondLength());
 	} catch(Exception e) {
 		System.err.println(e.getMessage());
 	}
@@ -265,7 +272,7 @@ public static void main(String[] args) {
 	
 	Scanner scan = new Scanner(System.in);
 	
-	File outFile = new File("demoed.txt");
+	File outFile = new File("survey.txt");
 	FileOutputStream outFileStream;
 	
 	SecureRandom ran = new SecureRandom();
@@ -278,8 +285,10 @@ public static void main(String[] args) {
 		outFileStream = new FileOutputStream(outFile);
 		PrintWriter outStream = new PrintWriter(outFileStream);
 		
+		forLoop();
+		
 		System.out.println
-		("Greetings, Gamer!\n We would like to conduct a short survey before we begin.\n  What is your name?");
+		(" Greetings, Gamer!\n We would like to conduct a short survey before we begin.\n What is your name?");
 		String name = scan.next();
 		outStream.println("The name is " +name+ ".");
 		
@@ -288,9 +297,9 @@ public static void main(String[] args) {
 		String age = scan.next();		
 		outStream.println("The age is " +age+ ".");
 		
-		System.out.println(name+", what do you like most about games?");
+		System.out.println(name+", In one word, how would you describe games?");
 		String add = scan.next();
-		outStream.println("They like " +add+ ".");
+		outStream.println("Games are " +add+ ".");
 							
 		
 		System.out.println("Thank You! Please, enjoy the game!");
@@ -311,7 +320,19 @@ public static void main(String[] args) {
 	
 }
 
-}
+public static void forLoop() {
+	
+	
+	String firstArray[] = {"Hello!","welcome","to","Tic-Tac-Toe!"};
+	for (int a = 0; a<firstArray.length; a++) {
+		System.out.println(firstArray[a]);
+		
+		try {Thread.sleep(0700);}
+		catch (Exception e){}
+		
+	}
 
+}
+}
 
 
